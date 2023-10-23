@@ -1,0 +1,32 @@
+   
+- hosts: all
+  become: True
+  handlers:
+    - include_tasks: 'handlers/main.yml'
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'
+  tasks:
+    - include_tasks: 'tasks/docker.yml'
+
+- hosts: all
+  become: True
+  handlers:
+    - include_tasks: 'handlers/main.yml'
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'
+  tasks:
+    - include_tasks: 'tasks/docker-compose.yml'
+
+- hosts: all
+  become: True
+  roles:
+    - set-hostname
+    - maintainer-users
+    - set-time
+  handlers:
+    - include_tasks: 'handlers/main.yml'
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'

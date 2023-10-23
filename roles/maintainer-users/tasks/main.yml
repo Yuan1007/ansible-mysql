@@ -1,0 +1,14 @@
+---
+- name: Main => Start Add / Update Users...
+  include_tasks: "tasks/add_users.yml"
+  with_items: "{{ add_users }}"
+  loop_control:
+    loop_var: user
+  when: add_users is defined
+
+- name: Main => Start Delete Users...
+  include_tasks: "tasks/delete_users.yml"
+  with_items: "{{ delete_users }}"
+  loop_control:
+    loop_var: user
+  when: delete_users is defined

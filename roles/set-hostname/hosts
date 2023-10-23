@@ -1,0 +1,8 @@
+[all:vars]
+ansible_python_interpreter = /usr/bin/python3
+ansible_ssh_extra_args = '-o StrictHostKeyChecking=no'
+
+[hosts]
+#10.1.168.15  ansible_ssh_user=ubuntu ansible_ssh_pass=26597795  ansible_sudo_pass=26597795
+
+ 

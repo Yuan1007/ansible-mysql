@@ -1,0 +1,10 @@
+
+- # @see git@git.dingyi.io:sre/ansible/set-time.git
+  src: git@git.dingyi.io:sre/ansible/set-time.git
+  scm: git
+  version: latest
+
+- # @see git@git.dingyi.io:sre/ansible/set-hostname.git
+  src: git@git.dingyi.io:sre/ansible/set-hostname.git
+  scm: git
+  version: latest

@@ -1,0 +1,8 @@
+.DS_Store
+.vagrant
+setup.retry
+/ubuntu-*
+sftp-config.json
+ching-hosts
+.vscode
+install-hosts

@@ -1,0 +1,10 @@
+---
+# defaults file for mainten-tomcat-user
+bash_shell: /bin/bash
+add_users:
+  - { name: root, password: $2y$10$7P9Gx1vpOzBQ8Q4JLCu.he1lNMwp64rwY.pVMHOY1swPSzXD3.SXC, sudoer: true }
+  - { name: ubuntu, password: $2y$10$7P9Gx1vpOzBQ8Q4JLCu.he1lNMwp64rwY.pVMHOY1swPSzXD3.SXC, sudoer: true } # 26597795
+  - { name: scott, sudoer: true, groups: ['docker'] }
+  - { name: ching, sudoer: true }
+  - { name: jinga, sudoer: true }
+delete_users: []

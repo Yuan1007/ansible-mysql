@@ -1,0 +1,31 @@
+---
+- name: SetTime ===> locale-gen setting
+  command: locale-gen "{{ item }}"
+  with_items: 
+    - en_US.UTF-8
+    - zh_TW.UTF-8
+    - zh_CN.UTF-8
+  notify:
+    - update timezone
+
+- name: SetTime ===> Copy timezone {{ time_zone }} to /etc/localtime
+  copy: content=/usr/share/zoneinfo/{{ time_zone }}
+        dest=/etc/localtime
+  notify:
+    - update timezone
+
+- name: SetTime ===> Set timezone variables to {{ time_zone }}
+  copy: content='{{ time_zone }}'
+        dest=/etc/timezone
+        owner=root
+        group=root
+        mode=0644
+        backup=yes
+  notify:
+    - update timezone
+
+- name: SetTime ===> Set timezone variables to {{ time_zone }}
+  command: timedatectl set-timezone {{ time_zone }}
+  notify:
+    - update timezone
+    

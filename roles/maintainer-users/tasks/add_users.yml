@@ -1,0 +1,56 @@
+---
+- name: Add / Update {{ user.name }} user with bash shell
+  user:
+    name: "{{ user.name }}"
+    shell: "{{ bash_shell }}"
+
+- name: Ensure group exists
+  with_items: "{{ user.groups }}"
+  group:
+    name: "{{ item }}"
+    state: present
+  when: user.groups is defined
+
+- name: Add / Update {{ user.name }} user groups
+  with_items: "{{ user.groups }}"
+  user:
+    name: "{{ user.name }}"
+    groups: "{{ user.groups }}"
+  when: user.groups is defined
+
+- name: Add / Update {{ user.name }} keys if exist
+  authorized_key:
+    user: "{{ user.name }}"
+    state: present
+    key: "{{ item }}"
+  with_file:
+    - "files/public_keys/{{ user.name }}"
+  ignore_errors: true
+
+- name: Add / Update {{ user.name }} password if exist
+  user:
+    name: "{{ user.name }}"
+    state: present
+    password: "{{ user.password }}"
+  when: user.password is defined
+
+- name: Delete {{ user.name }} config from sudoers.d file when false
+  file:
+    path: "/etc/sudoers.d/{{ user.name }}"
+    state: absent
+  when: 
+    - user.name != 'root'
+    - user.sudoer is defined 
+    - user.sudoer == false
+
+- name: Copy {{ user.name }} config to sudoers.d file
+  copy:
+    src:  "files/sudoers.d/{{ user.name }}"
+    dest: "/etc/sudoers.d/{{ user.name }}"
+    owner: root
+    group: root
+    mode: "0644"
+  when: 
+    - user.name != 'root'
+    - user.sudoer is defined 
+    - user.sudoer == true
