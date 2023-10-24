@@ -3,26 +3,9 @@
 time_zone: 'Asia/Taipei'
 
 add_users:
-  - { name: root, password: $2y$10$7P9Gx1vpOzBQ8Q4JLCu.he1lNMwp64rwY.pVMHOY1swPSzXD3.SXC, sudoer: true }
-  - { name: ubuntu, password: $2y$10$7P9Gx1vpOzBQ8Q4JLCu.he1lNMwp64rwY.pVMHOY1swPSzXD3.SXC, sudoer: true } # 26597795
-  - { name: scott, sudoer: true, groups: ['docker'] }
-  # - { name: areal, sudoer: true, groups: ['docker']}
-  # - { name: frank, sudoer: true, groups: ['docker']}
-  # - { name: ching, sudoer: true, groups: ['docker'] }
   - { name: yuan, sudoer: true, groups: ['docker'] }
-  # - { name: joyce, sudoer: true }
-  # - { name: cheng, sudoer: true }
-  # - { name: jinga, sudoer: true, groups: ['docker'] }
-  # - { name: lucia, sudoer: true, groups: ['docker'] }
-  # - { name: esther, sudoer: true, groups: ['docker'] }
-  # - { name: deployer, groups: ['docker'] }
-  # - { name: kane, sudoer: true }
-  # - { name: clear, sudoer: true }
-  # - { name: nash, sudoer: true }
-  # - { name: kevin, sudoer: true }
-  # - { name: chacha, sudoer: true }
+
 delete_users: []
   # - { name: test }
-  # - { name: gimmy }
-  # - { name: cheng }
+
 

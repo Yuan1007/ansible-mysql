@@ -3,6 +3,5 @@
 setup.retry
 /ubuntu-*
 sftp-config.json
-ching-hosts
 .vscode
 install-hosts
