@@ -1,0 +1,31 @@
+---
+- name: Setup SSH keys for GitHub
+  hosts: localhost
+  gather_facts: no
+  vars_files: #引用變量檔
+    - vars/main.yml
+  tasks:
+
+    - name: Check if SSH key already exists
+      stat:
+        path: "~/.ssh/id_rsa"
+      register: ssh_key
+
+    - name: Generate SSH key if it doesn't exist
+      command: ssh-keygen -t rsa -b 4096 -C \"{{ ssh_email }}\" -f "~/.ssh/id_rsa" -N ""
+      when: not ssh_key.stat.exists
+
+    - name: Ensure ssh-agent is running
+      shell: eval "$(ssh-agent -s)"
+      register: ssh_agent_started
+
+    - name: Add private key to ssh-agent
+      shell: ssh-add ~/.ssh/id_rsa
+      when: ssh_agent_started.changed
+
+    - name: Display public key
+      command: cat ~/.ssh/id_rsa.pub
+      register: public_key
+
+    - debug:
+        msg: "Add the following SSH public key to your GitHub account: {{ public_key.stdout }}"

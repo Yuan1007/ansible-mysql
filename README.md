@@ -18,3 +18,10 @@ git 操作指令
     ``` git remote remove ${指定的遠端倉庫名稱} ```
     6. git 分支重新命名
     ``` git branch -m development ```
+    7. 檢查git目前使用的帳戶跟mail
+    ``` git config user.name ``` 
+    ``` git config user.email ``` 
+    8. 複製公鑰指令
+    ``` cat ~/.ssh/id_rsa.pub | pbcopy ``` # MacOS
+    ``` cat ~/.ssh/id_rsa.pub | xclip -selection clipboard ``` # Linux
+

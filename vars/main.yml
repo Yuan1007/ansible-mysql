@@ -8,3 +8,6 @@ docker_compose_version: "1.29.2"
 docker_compose_arch: "{{ ansible_architecture }}"
 docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-linux-{{ docker_compose_arch }}"
 docker_compose_path: /usr/local/bin/docker-compose
+
+#ssh email
+ssh_email: evereasy21@gmail.com

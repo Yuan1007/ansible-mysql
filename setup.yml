@@ -16,8 +16,8 @@
   vars_files:
     - 'defaults/main.yml'
     - 'vars/main.yml'
-  tasks:
-    - include_tasks: 'tasks/docker-compose.yml'
+  # tasks:
+  #   - include_tasks: 'tasks/files/docker-compose.yml'
 
 - hosts: all
   become: True
