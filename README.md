@@ -21,8 +21,8 @@ ex:  ` git push -u origin main `
 ` git config user.name ` 
 ` git config user.email ` 
 8. 複製公鑰指令
-` cat ~/.ssh/id_rsa.pub | pbcopy ` # MacOS
-` cat ~/.ssh/id_rsa.pub | xclip -selection clipboard ` # Linux
+` cat ~/.ssh/id_rsa.pub | pbcopy ` # MacOS  
+` cat ~/.ssh/id_rsa.pub | xclip -selection clipboard ` # Linux  
 
 ----------
 ### 操作指南
