@@ -25,3 +25,34 @@ git 操作指令
     ``` cat ~/.ssh/id_rsa.pub | pbcopy ``` # MacOS
     ``` cat ~/.ssh/id_rsa.pub | xclip -selection clipboard ``` # Linux
 
+在 inventory的hosts檔案 設定要安裝的mysql版本
+mysql_version="5.7" or mysql_version="8"
+
+驗證 MySQL 容器是否運行
+docker ps | grep mysql
+
+連線docker 容器
+docker exec -it 053a4a633975 /bin/bash
+### 053a4a633975 => 這邊請改為你的container id
+
+使用 mysql 工具來連接到 MySQL
+mysql -u root -p
+預設: root/123456
+
+創建一個新的 MySQL 使用者：
+CREATE USER 'newuser'@'%' IDENTIFIED BY 'password';
+
+給予給這個新使用者完全的權限
+GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'%' WITH GRANT OPTION;
+
+刷新權限生效
+FLUSH PRIVILEGES;
+
+測試連接
+mysql -u newuser -p
+
+修改root密碼
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+
+刷新權限生效
+FLUSH PRIVILEGES;

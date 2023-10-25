@@ -1,3 +1,0 @@
----
-# defaults file for set-hostname
-#ansible_set_hostname: 'default-hostname'

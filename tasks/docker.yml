@@ -6,13 +6,26 @@
     state: directory
     mode: '0755'
 
-- name: Upload docker-compose file
+- name: Upload docker-compose-5.7 file
   copy:
-    src: docker-compose.yml
-    dest: /mysql/docker-compose.yml
+    src: docker-compose-5.7.yml
+    dest: /mysql/docker-compose-5.7.yml
+  when: mysql_version == "5.7"
 
-- name: Deploy MySQL using docker-compose
+- name: Upload docker-compose-8 file
+  copy:
+    src: docker-compose-8.yml
+    dest: /mysql/docker-compose-8.yml
+  when: mysql_version == "8"
+
+- name: Deploy MySQL 5.7 using docker-compose
   command:
-    cmd: docker-compose up -d
+    cmd: "docker-compose -f docker-compose-5.7.yml up -d"
     chdir: /mysql/  # 这里指定docker-compose.yml所在的目录
+  when: mysql_version == "5.7"
 
+- name: Deploy MySQL 8 using docker-compose
+  command:
+    cmd: "docker-compose -f docker-compose-8.yml up -d"
+    chdir: /mysql/  
+  when: mysql_version == "8"

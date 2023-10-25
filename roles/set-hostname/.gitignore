@@ -1,7 +1,0 @@
-.vagrant
-roles
-.DS_Store
-setup.retry
-/ubuntu-*
-sftp-config.json
-.vscode

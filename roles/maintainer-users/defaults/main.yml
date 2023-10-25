@@ -1,6 +1,0 @@
----
-# defaults file for mainten-tomcat-user
-bash_shell: /bin/bash
-add_users:
-  - { name: yuan, sudoer: true }
-delete_users: []

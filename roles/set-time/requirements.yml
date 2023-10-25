@@ -1,5 +1,0 @@
-
-- # @see git@git.dingyi.io:sre/ansible/settime.git
-  src: git@git.dingyi.io:sre/ansible/settime.git
-  scm: git
-  version: master

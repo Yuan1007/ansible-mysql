@@ -9,8 +9,6 @@ services:
     ports:
       - "3306:3306"
     volumes:
-       # 挂挂载配置文件
-       #  - ./mysql/db/:/docker-entrypoint-initdb.d
       # 挂挂载配置文件
       - ./mysql/conf:/etc/mysql/conf.d
       # 挂载日志
