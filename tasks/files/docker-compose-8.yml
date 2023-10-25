@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  mysql-db:
+  mysql:
     # 指定容器的名称
     container_name: mysql     
     # 指定镜像和版本
@@ -17,7 +17,20 @@ services:
       # 配置root密码
       MYSQL_ROOT_PASSWORD: 123456
     volumes:
-      # 挂载数据目录
-      - "./mysql/data:/var/lib/mysql" 
-      # 挂载配置文件目录
-      - "./mysql/config:/etc/mysql/conf.d"
+      # 挂挂载配置文件
+      - ./mysql/conf:/etc/mysql/conf.d
+      # 挂载日志
+      - ./mysql/logs:/logs
+      # 挂载数据
+      - ./mysql/data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql   # 替換為你的MySQL容器名稱或IP地址
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql  # 如果 MySQL 容器名稱不同，請進行更改

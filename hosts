@@ -2,7 +2,8 @@
 ansible_ssh_user=yuan
 ansible_python_interpreter=/usr/bin/python3
 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
-mysql_version="5.7"
+# mysql_version="5.7"
+mysql_version="8"
 
 [hosts]
 10.1.169.6

@@ -26,3 +26,14 @@ services:
     environment:
       # root 密码
       MYSQL_ROOT_PASSWORD: 123456
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql   # 替換為你的MySQL容器名稱或IP地址
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql  # 如果 MySQL 容器名稱不同，請進行更改     

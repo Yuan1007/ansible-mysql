@@ -29,3 +29,19 @@
     cmd: "docker-compose -f docker-compose-8.yml up -d"
     chdir: /mysql/  
   when: mysql_version == "8"
+
+# - name: Ensure directory exists for phpMyAdmin docker-compose
+#   file:
+#     path: /phpmyadmin/
+#     state: directory
+#     mode: '0755'
+
+# - name: Upload docker-compose file for phpMyAdmin
+#   copy:
+#     src: docker-compose-phpmyadmin.yml
+#     dest: /phpmyadmin/docker-compose-phpmyadmin.yml
+
+# - name: Deploy phpMyAdmin using docker-compose
+#   command:
+#     cmd: "docker-compose -f docker-compose-phpmyadmin.yml up -d"
+#     chdir: /phpmyadmin/  # 指定docker-compose.yml所在的目錄
